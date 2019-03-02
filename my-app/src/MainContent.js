@@ -2,11 +2,13 @@ import React from "react"
 
 function MainContent(props) {
     return(
-        <div>
-            <input type="checkbox" />
+        <div className="todo-item">
+            <input type="checkbox" 
+            checked={props.item.completed}
+            onChange={() => props.handleChange(props.item.id)}
+            />
             <label>
-                {props.punchline}
-                {props.question}
+                {props.item.text}
             </label>
         </div>
     )
