@@ -9,10 +9,17 @@ class App extends Component {
     super()
     this.state = {
       todosData: data,
+      isLoading: true, 
     }
     this.handleChange = this.handleChange.bind(this)
   }
-
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      })
+    }, 1000)
+  }
   handleChange(id) {
       this.setState(prevState => {
         const updatedTodos = prevState.todosData.map((todo) => {
@@ -29,12 +36,18 @@ class App extends Component {
 
   render() {
     const todos = this.state.todosData.map(item => <MainContent key={item.id} item={item} handleChange={this.handleChange} />)
-
-    return (
-      <div className="todo-list">
-        {todos}
-      </div>
-    )
+    
+    if (this.state.isLoading === false) {
+      return (
+        <div className="todo-list">
+          {todos}
+        </div>
+        )
+      } else {
+        return (
+          <h1>Loading.. </h1>
+        )
+      }
   }
 }
 
