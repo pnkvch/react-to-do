@@ -7,7 +7,7 @@ function MainContent(props) {
             checked={props.item.completed}
             onChange={() => props.handleChange(props.item.id)}
             />
-            <label>
+            <label className={props.item.completed && "incomplete"}>
                 {props.item.text}
             </label>
         </div>
