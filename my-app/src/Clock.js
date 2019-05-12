@@ -4,9 +4,10 @@ const Clock = () => {
   const [date, setDate] = useState(new Date());
   const tick = () => {
     setDate(new Date());
+    clearInterval(interval);
   };
 
-  setInterval(() => tick(), 1000);
+  const interval = setInterval(() => tick(), 1000);
 
   return <p>{date.toLocaleTimeString()}</p>;
 };

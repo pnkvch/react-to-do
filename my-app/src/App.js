@@ -39,6 +39,21 @@ class App extends Component {
       textInput: e.target.value
     });
   };
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState(prevState => {
+      const updated = {
+        id: prevState.todosData.length + 1,
+        text: prevState.textInput,
+        completed: false
+      };
+      prevState.textInput = "";
+      const newData = prevState.todosData.push(updated);
+      return newData;
+    });
+    document.querySelector(".todo-list").style.height =
+      this.state.todosData.length * 60 + "px";
+  };
   render() {
     const todos = this.state.todosData.map(item => (
       <MainContent key={item.id} item={item} handleChange={this.handleChange} />
@@ -47,18 +62,18 @@ class App extends Component {
     if (this.state.isLoading === false) {
       return (
         <div className="main">
-          <form>
+          <form onSubmit={this.handleSubmit}>
+            <p>Add item:</p>
             <input
               type="text"
               value={this.state.textInput}
               onChange={this.handleTextChange}
+              className="input-field"
             />
-          </form>
-          <h1>{this.state.textInput}</h1>
-          <div className="todo-list">{todos}</div>
-          <div>
+            <button type="submit">Submit</button>
             <Clock />
-          </div>
+          </form>
+          <div className="todo-list">{todos}</div>
         </div>
       );
     } else {

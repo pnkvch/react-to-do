@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 #root {
   display: flex;
   justify-content: center;
@@ -8,12 +13,13 @@ body {
 
 .todo-list {
   background-color: white;
-  margin: 20px auto;
-  width: 30%;
+  margin: 20px;
+  width: 45%;
   height: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   border: 1px solid #efefef;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   padding: 40px;
@@ -33,10 +39,11 @@ body {
 }
 
 .main {
-  width: 100%;
+  width: 70%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 input[type="checkbox"] {
@@ -51,4 +58,20 @@ input[type="checkbox"]:focus {
 .incomplete {
   text-decoration: line-through;
   color: grey;
+}
+
+form {
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+form p {
+  margin-bottom: 5px;
+}
+
+button {
+  width: 80px;
+  height: 20px;
+  margin-top: 10px;
 }
